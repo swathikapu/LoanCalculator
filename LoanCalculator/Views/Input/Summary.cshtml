@@ -1,9 +1,41 @@
-﻿
+﻿@model LoanCalculator.Models.LoanCalculatorModel
+
 @{
     ViewBag.Title = "Summary";
 }
 
-<h2>@ViewBag.LoanAmount</h2>
-<h2>@ViewBag.NumYears</h2>
-<h2>@ViewBag.InterestRate</h2>
+<h2>Summary</h2>
 
+<div>
+    <h4>LoanCalculatorModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LoanAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoanAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumYears)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumYears)
+        </dd>
+
+        <dt>
+            Interest 
+        </dt>
+
+        <dd>
+            @Model.calculateInterest()
+        </dd>
+    </dl>
+</div>
+<p>
+    
+    @Html.ActionLink("Re-enter Details", "Index")
+</p>

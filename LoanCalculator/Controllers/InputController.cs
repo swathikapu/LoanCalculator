@@ -10,29 +10,38 @@ namespace LoanCalculator.Controllers
     public class InputController : Controller
     {
         // GET: Input
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Index(double LoanAmount, int NumYears)
+        public ActionResult Index(LoanCalculatorModel loanCalculator)
         {
-            LoanCalculatorModel loanCalculator = new LoanCalculatorModel();
-            loanCalculator.LoanAmount = LoanAmount;
-            loanCalculator.NumYears = NumYears;
-
-            decimal InterestRate = loanCalculator.calculateInterest();
-            return RedirectToAction("Summary", new { LoanAmount = LoanAmount, NumYears = NumYears, InterestRate = InterestRate});
+            TryUpdateModel(loanCalculator);
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction(
+                    "Summary",
+                    new
+                    {
+                        LoanAmount = loanCalculator.LoanAmount,
+                        NumYears = loanCalculator.NumYears,
+                    });
+            }
+            return View();
         }
 
-        public ActionResult Summary(double LoanAmount, int NumYears, decimal InterestRate )
+        public ActionResult Summary(double LoanAmount, int NumYears)
         {
-            ViewBag.LoanAmount = LoanAmount;
-            ViewBag.NumYears = NumYears;
-            ViewBag.InterestRate = InterestRate;
+            LoanCalculatorModel loanCalculator = new LoanCalculatorModel
+            {
+                LoanAmount = LoanAmount,
+                NumYears = NumYears,
+            };
 
-            return View(ViewBag);
+            return View(loanCalculator);
         }
     }
 }
