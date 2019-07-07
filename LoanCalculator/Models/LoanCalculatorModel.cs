@@ -13,13 +13,13 @@ namespace LoanCalculator.Models
 
         public decimal calculateInterest()
         {
-            decimal amountInterestRate = db.AmountInterestRates.Single(
-                air => LoanAmount > decimal.ToDouble(air.MinAmount) && LoanAmount <= decimal.ToDouble(air.MaxAmount)
+            decimal amountInterestRate = db.AmountInterestRates.AsEnumerable().Single(
+                air => LoanAmount > Convert.ToDouble(air.MinAmount) && LoanAmount <= Convert.ToDouble(air.MaxAmount)
             ).InterestRate;
 
-            decimal yearInterestRate = db.YearInterestRates.Single(
+            decimal yearInterestRate = db.YearInterestRates.AsEnumerable().Single(
                 yir => NumYears >yir.MinYears && NumYears <= yir.MaxYears
-                ).InterestRate;
+            ).InterestRate;
 
             return amountInterestRate + yearInterestRate;
         }

@@ -21,13 +21,17 @@ namespace LoanCalculator.Controllers
             LoanCalculatorModel loanCalculator = new LoanCalculatorModel();
             loanCalculator.LoanAmount = LoanAmount;
             loanCalculator.NumYears = NumYears;
-            return RedirectToAction("Summary", new { LoanAmount = LoanAmount, NumYears = NumYears });
+
+            decimal InterestRate = loanCalculator.calculateInterest();
+            return RedirectToAction("Summary", new { LoanAmount = LoanAmount, NumYears = NumYears, InterestRate = InterestRate});
         }
 
-        public ActionResult Summary(double LoanAmount, int NumYears)
+        public ActionResult Summary(double LoanAmount, int NumYears, decimal InterestRate )
         {
             ViewBag.LoanAmount = LoanAmount;
             ViewBag.NumYears = NumYears;
+            ViewBag.InterestRate = InterestRate;
+
             return View(ViewBag);
         }
     }
