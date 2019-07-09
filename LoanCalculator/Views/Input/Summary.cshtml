@@ -1,77 +1,83 @@
 ﻿@model LoanCalculator.Models.LoanCalculatorModel
 
 @{
-    ViewBag.Title = "Summary";
+                /**/
+
+                ViewBag.Title = "Summary";
 }
-<h2>Your personlised loan details</h2>
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
+@using (Html.BeginForm())
+{
+    <h2>Your personlised quote details</h2>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
 
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LoanAmount)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.LoanAmount)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LoanAmount)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.LoanAmount)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NumYears)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.NumYears)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.NumYears)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.NumYears)
+            </dd>
 
-        <dt>
-            Interest
-        </dt>
+            <dt>
+                Interest
+            </dt>
 
-        <dd>
-            @Model.calculateInterest()
-        </dd>
+            <dd>
+                @Model.calculateInterest()
+            </dd>
 
-        <dt>
-            Monthly Payment
-        </dt>
+            <dt>
+                Monthly Payment
+            </dt>
 
-        <dd>
-            @Model.getMonthlyPayment()
-        </dd>
+            <dd>
+                @Model.getMonthlyPayment()
+            </dd>
 
-        <dt>
-            Total Payment
-        </dt>
+            <dt>
+                Total Payment
+            </dt>
 
-        <dd>
-            @Model.getTotalPayment()
-        </dd>
-    </dl>
-</div>
-<p class="redirect">
+            <dd>
+                @Model.getTotalPayment()
+            </dd>
+        </dl>
+    </div>
+    <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Apply Now" class="btn btn-default" style="background-color:bisque" />
+            </div>
+        </div>
+    <p class="redirect">
+        @Html.ActionLink("Get New Quote", "Index")
+    </p>
 
-    @Html.ActionLink("Re-Quote", "Index")
-
-    <br />
-    @Html.ActionLink("Please press ok to Continue", "Approved")
-
-</p>
+}

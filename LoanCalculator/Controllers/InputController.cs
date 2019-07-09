@@ -50,27 +50,22 @@ namespace LoanCalculator.Controllers
         [HttpPost]
         public ActionResult Summary(LoanCalculatorModel loanCalculator)
         {
-            
-
             return RedirectToAction("Approved",
                 new
                 {
                     FirstName = loanCalculator.FirstName,
                     LastName = loanCalculator.LastName,
+                    LoanAmount = loanCalculator.LoanAmount,
                 }
-                );
+           );
         }
 
-        public ActionResult Approved(string FirstName, string LastName)
+        public ActionResult Approved(string FirstName, string LastName, double LoanAmount)
         {
-            LoanCalculatorModel loanCalculator = new LoanCalculatorModel
-            {
-                FirstName = FirstName,
-                LastName = LastName,
-               
-            };
-
-            return View(loanCalculator);
+            ViewBag.FirstName = FirstName;
+            ViewBag.LastName = LastName;
+            ViewBag.LoanAmount = LoanAmount;
+            return View(ViewBag);
         }
     }
 }
