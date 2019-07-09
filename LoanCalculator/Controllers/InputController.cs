@@ -26,6 +26,8 @@ namespace LoanCalculator.Controllers
                     "Summary",
                     new
                     {
+                        FirstName = loanCalculator.FirstName,
+                        LastName = loanCalculator.LastName,
                         LoanAmount = loanCalculator.LoanAmount,
                         NumYears = loanCalculator.NumYears,
                     });
@@ -33,12 +35,39 @@ namespace LoanCalculator.Controllers
             return View();
         }
 
-        public ActionResult Summary(double LoanAmount, int NumYears)
+        public ActionResult Summary(string FirstName,string LastName , double LoanAmount, int NumYears)
         {
             LoanCalculatorModel loanCalculator = new LoanCalculatorModel
             {
+                FirstName = FirstName,
+                LastName = LastName,
                 LoanAmount = LoanAmount,
                 NumYears = NumYears,
+            };
+
+            return View(loanCalculator);
+        }
+        [HttpPost]
+        public ActionResult Summary(LoanCalculatorModel loanCalculator)
+        {
+            
+
+            return RedirectToAction("Approved",
+                new
+                {
+                    FirstName = loanCalculator.FirstName,
+                    LastName = loanCalculator.LastName,
+                }
+                );
+        }
+
+        public ActionResult Approved(string FirstName, string LastName)
+        {
+            LoanCalculatorModel loanCalculator = new LoanCalculatorModel
+            {
+                FirstName = FirstName,
+                LastName = LastName,
+               
             };
 
             return View(loanCalculator);

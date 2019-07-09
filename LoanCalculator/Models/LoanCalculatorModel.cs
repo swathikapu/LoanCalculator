@@ -9,6 +9,10 @@ namespace LoanCalculator.Models
     public class LoanCalculatorModel
     {
         [Required]
+        public string FirstName { get; set; }
+        [Required]
+        public string LastName { get; set; }
+        [Required]
         public double LoanAmount { get; set; } 
         [Required]
         public int NumYears { get; set; }
