@@ -20,6 +20,7 @@ namespace LoanCalculator.Controllers
         public ActionResult Index(LoanCalculatorModel loanCalculator)
         {
             TryUpdateModel(loanCalculator);
+
             if (ModelState.IsValid)
             {
                 return RedirectToAction(
