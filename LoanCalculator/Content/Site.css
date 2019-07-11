@@ -1,19 +1,15 @@
 ﻿
 
 body {
-    padding-top: 50px;
     padding-bottom: 20px;
     color: white;
-    /*background-image: url("../Content/Images/personal_loan2.jpg");*/
     background: #36BFC4;
     font-family: 'Literata', serif;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    /*padding-left: 30px;*/
-    /*padding-right: 30px;*/
-    padding-top: 30px;
+    padding-top: 20px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -25,54 +21,28 @@ body {
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
-input,
+/*input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 500px;
+}*/
+
+input {
+    max-width: 300px;
 }
 
+*/
 /* User styles*/
-
-.redirect
-{
-    color:white;
+.redirect {
+    color: white;
 }
 
-.form-horizontal{
-    display:inline-block;
-}
-
-.form-apply-text {
-    text-align: center;
-}
-
-.form-apply-text h1 {
-    font-size: 150px;
-    font-weight: bold;
-    margin-top: -20px;
-}
-
-.form-apply-text h2  {
-    font-size: 80px;
-    margin-top:-10px;
-    /*font-weight: bold;*/
-}
-
-.form-apply-text h3 {
-    font-size: 60px;
-    padding-top: 0px;
-    /*font-weight: bold;*/
-}
-
-.form-inputs
-{
-    padding-top: 50px;
-    /*float:right;*/
-    /*position:relative;*/
-}
+/*.form-inputs{
+    float:right;
+}*/
 
 .form-group input[type=submit] {
-    float: right;
+    /*float: right;*/
     background-color: bisque;
 }
 
