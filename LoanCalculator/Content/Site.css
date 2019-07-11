@@ -66,7 +66,7 @@ textarea {
 .form-inputs
 {
     padding-top: 50px;
-    float:right;
+    /*float:right;*/
     position:relative;
 }
 

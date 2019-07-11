@@ -20,13 +20,21 @@ namespace LoanCalculator.Models
         [Range(1, 100000)]
         public double LoanAmount { get; set; } 
         [Required]
-        [Range(1, 25)]
+        [Range(1, 20)]
         public int NumYears { get; set; }
         private double? _InterestRateCache = null;
         private double? _MonthlyPaymentCache = null;
-        public double InterestRate {
+        public double InterestRate
+        {
             get
             {
+                // Make sure when the user enters values not in database
+                // E.g: Negative values/ zero/ more than maximum values specified,
+                // default LoanAmount and NumYears to 1.
+                if (LoanAmount <= 0.0 || LoanAmount > 100000)
+                    LoanAmount = 1.0;
+                if (NumYears <= 0 || NumYears > 20)
+                    NumYears = 1;
                 if (_InterestRateCache != null)
                     return (double)_InterestRateCache;
                 // Converting AmountInterestRates table to AsEnumerable as 
@@ -34,7 +42,6 @@ namespace LoanCalculator.Models
                 decimal amountInterestRate = db.AmountInterestRates.AsEnumerable().Single(
                     air => LoanAmount > Convert.ToDouble(air.MinAmount) && LoanAmount <= Convert.ToDouble(air.MaxAmount)
                 ).InterestRate;
-
                 decimal yearInterestRate = db.YearInterestRates.Single(
                     yir => NumYears > yir.MinYears && NumYears <= yir.MaxYears
                 ).InterestRate;
@@ -42,8 +49,8 @@ namespace LoanCalculator.Models
                 return (double)_InterestRateCache;
             }
         }
-
-        public double MonthlyPayment {
+        public double MonthlyPayment
+        {
             get
             {
                 if (_MonthlyPaymentCache != null)
@@ -55,27 +62,26 @@ namespace LoanCalculator.Models
                 return (double)_MonthlyPaymentCache;
             }
         }
-
-        public double TotalPayment {
+        public double TotalPayment
+        {
             get
             {
                 return Math.Round(MonthlyPayment * NumYears * 12, 2);
             }
         }
-
-        public double Principal {
+        public double Principal
+        {
             get
             {
                 return LoanAmount * 100 / TotalPayment;
             }
         }
-
-        public double Interest{
+        public double Interest
+        {
             get
             {
                 return 100 - Principal;
             }
         }
-
     }
 }

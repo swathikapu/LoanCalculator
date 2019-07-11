@@ -9,7 +9,6 @@ namespace LoanCalculator.Controllers
 {
     public class InputController : Controller
     {
-        // GET: Input
         [HttpGet]
         public ActionResult Index()
         {
@@ -20,7 +19,6 @@ namespace LoanCalculator.Controllers
         public ActionResult Index(LoanCalculatorModel loanCalculator)
         {
             TryUpdateModel(loanCalculator);
-
             if (ModelState.IsValid)
             {
                 return RedirectToAction(
@@ -48,6 +46,7 @@ namespace LoanCalculator.Controllers
 
             return View(loanCalculator);
         }
+
         [HttpPost]
         public ActionResult Summary(LoanCalculatorModel loanCalculator)
         {
