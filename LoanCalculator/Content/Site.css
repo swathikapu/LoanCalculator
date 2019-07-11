@@ -44,6 +44,8 @@ input {
 .form-group input[type=submit] {
     /*float: right;*/
     background-color: bisque;
+    position:relative;
+    left:180px;
 }
 
 /*Summary page styles*/

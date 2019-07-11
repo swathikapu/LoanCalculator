@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using LoanCalculator.Models;
-
+ 
 namespace LoanCalculator.Controllers
 {
     public class InputController : Controller

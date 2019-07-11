@@ -11,10 +11,10 @@ namespace LoanCalculator.Models
     {
         LoanInterestDBEntities db = new LoanInterestDBEntities();
         [Required]
-        [RegularExpression(@"^(([A-Za-z]+))$", ErrorMessage = "Please enter alphabets only")]
+        [RegularExpression(@"^(([A-Za-z]+))$", ErrorMessage="Please enter alphabets only")]
         public string FirstName { get; set; }
         [Required]
-        [RegularExpression(@"^(([A-Za-z]+))$", ErrorMessage = "Please enter alphabets only")]
+        [RegularExpression(@"^(([A-Za-z]+))$", ErrorMessage="Please enter alphabets only")]
         public string LastName { get; set; }
         [Required]
         [Range(1, 100000)]
