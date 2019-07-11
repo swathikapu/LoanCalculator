@@ -6,91 +6,17 @@
     ViewBag.Title = "Summary";
 }
 
-@using (Html.BeginForm())
-{
-    <h2>Your personlised quote details</h2>
-    <div>
-        <hr />
-        <dl class="dl-horizontal">
-
-            <dt>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.FirstName)
-            </dd>
-
-
-            <dt>
-                @Html.DisplayNameFor(model => model.LastName)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.LastName)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.LoanAmount)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.LoanAmount)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.NumYears)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.NumYears)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.InterestRate)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.InterestRate)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.MonthlyPayment)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.MonthlyPayment)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.TotalPayment)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.TotalPayment)
-            </dd>
-        </dl>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Apply Now" class="btn btn-default" style="background-color:bisque" />
-        </div>
-    </div>
-    <p class="redirect">
-        @Html.ActionLink("Get New Quote", "Index") 
-    </p>
-}
-
-    <!DOCTYPE HTML>
-    <html>
+<!DOCTYPE HTML>
+<html>
     <head>
         <script>
             window.onload = function () {
-
                 var chart = new CanvasJS.Chart("chartContainer", {
                     animationEnabled: true,
+                    backgroundColor: "#36BFC4",
                     title: {
-                        text: "Total Percentage - 2019"
+                        text: "Total Percentage",
+                        fontColor: "#fff",
                     },
                     data: [{
                         type: "pie",
@@ -98,25 +24,85 @@
                         yValueFormatString: "##0.00\"%\"",
                         indexLabel: "{label} {y}",
                         dataPoints: [
-                            { y:  @Model.Principal, label:"Pricipal Amount"},
-                            { y: @Model.Interest, label:"Interest Amount"}
-                            //{ y: 7.06, label: "Baidu" },
-                            //{ y: 4.91, label: "Yahoo" },
-                            //{ y: 1.26, label: "Others" }
+                            { y: @Model.Principal, label: "Pricipal", indexLabelFontColor: "#fff"},
+                            { y: @Model.Interest, label: "Interest", indexLabelFontColor: "#fff"}
                         ]
                     }]
                 });
                 chart.render();
-
             }
         </script>
     </head>
-    <body>
-        <p>
-            <h3>Pricipal Amount in percentage :</h3> @Model.Principal
-            <h3>Interest Amount in percentage :</h3> @Model.Interest
-        </p>
-        <div id="chartContainer" style="height: 300px; width: 100%;"></div>
-        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-    </body>
 </html>
+@using (Html.BeginForm())
+{
+    <h2>Your personlised quote details</h2>
+    <hr/>
+    <div>
+        <div class="loan-summary">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FirstName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.LastName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.LoanAmount)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.LoanAmount)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.NumYears)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NumYears)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.InterestRate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.InterestRate)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.MonthlyPayment)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.MonthlyPayment)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.TotalPayment)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.TotalPayment)
+                </dd>
+            </dl>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Apply Now" class="btn btn-default"/>
+                </div>
+            </div>
+        </div>
+        <div id="chartContainer"></div>
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    </div>
+
+    <p class="redirect">
+        @Html.ActionLink("Get New Quote", "Index")
+    </p>
+}
+

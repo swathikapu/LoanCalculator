@@ -43,7 +43,6 @@ namespace LoanCalculator.Controllers
                 LoanAmount = LoanAmount,
                 NumYears = NumYears,
             };
-
             return View(loanCalculator);
         }
 
