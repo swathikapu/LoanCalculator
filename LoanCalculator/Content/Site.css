@@ -37,9 +37,9 @@ input {
     color: white;
 }
 
-/*.form-inputs{
-    float:right;
-}*/
+.form-inputs{
+    width:550px;
+}
 
 .form-group input[type=submit] {
     /*float: right;*/
@@ -49,18 +49,17 @@ input {
 }
 
 /*Summary page styles*/
-
-.loan-summary
-{
-    display:inline-block;
-    position:relative;
-    top:-90px;
-    font-size:18px;
+.loan-summary {
+    display: inline-block;
+    position: relative;
+    /*top: -90px;*/
+    font-size: 18px;
+    width:400px;
 }
 
 #chartContainer {
-    height: 300px;
-    width: 400px;
-    padding-left: 150px;
+    top: -200px;
     display: inline-block;
+    width:400px;
+    height:300px;
 }

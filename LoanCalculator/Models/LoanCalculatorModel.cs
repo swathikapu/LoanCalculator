@@ -10,17 +10,17 @@ namespace LoanCalculator.Models
     public class LoanCalculatorModel
     {
         LoanInterestDBEntities db = new LoanInterestDBEntities();
-        [Required]
+        [Required(ErrorMessage="Please enter your first name")]
         [RegularExpression(@"^(([A-Za-z]+))$", ErrorMessage="Please enter alphabets only")]
         public string FirstName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please enter your last name")]
         [RegularExpression(@"^(([A-Za-z]+))$", ErrorMessage="Please enter alphabets only")]
         public string LastName { get; set; }
-        [Required]
-        [Range(1, 100000)]
+        [Required(ErrorMessage = "Please enter loan amount (£1-£100000 max)")]
+        [Range(1, 100000, ErrorMessage = "Please enter loan amount (£1-£100000 max)")]
         public double LoanAmount { get; set; } 
-        [Required]
-        [Range(1, 20)]
+        [Required(ErrorMessage = "Please enter number of years (1-20 years max)")]
+        [Range(1, 20, ErrorMessage = "Please enter loan amount(£1 -£100000 max)")]
         public int NumYears { get; set; }
         private double? _InterestRateCache = null;
         private double? _MonthlyPaymentCache = null;
