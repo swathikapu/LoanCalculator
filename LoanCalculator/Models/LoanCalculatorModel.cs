@@ -12,13 +12,17 @@ namespace LoanCalculator.Models
     {
         LoanInterestDBEntities db = new LoanInterestDBEntities();
         TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+        private string _FirstName;
         [Required(ErrorMessage = "Please enter your first name")]
         [RegularExpression(@"^(([A-Za-z]+))$", ErrorMessage="Please enter alphabets only")]
-        private string _FirstName = "";
-        public string FirstName {
+        public string FirstName
+        {
             get
             {
-                return textInfo.ToTitleCase(_FirstName);
+                if (_FirstName != null)
+                    return textInfo.ToTitleCase(_FirstName);
+                else
+                    return _FirstName;
             }
             set
             {
@@ -26,13 +30,17 @@ namespace LoanCalculator.Models
             }
         }
 
+        private string _LastName;
         [Required(ErrorMessage = "Please enter your last name")]
         [RegularExpression(@"^(([A-Za-z]+))$", ErrorMessage="Please enter alphabets only")]
-        private string _LastName = "";
-        public string LastName {
+        public string LastName
+        {
             get
             {
-                return textInfo.ToTitleCase(_LastName);
+                if (_LastName != null)
+                    return textInfo.ToTitleCase(_LastName);
+                else
+                    return _LastName;
             }
             set
             {
