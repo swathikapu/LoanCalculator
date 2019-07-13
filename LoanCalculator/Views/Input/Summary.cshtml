@@ -8,8 +8,8 @@
 
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <script>
+<head>
+    <script>
             window.onload = function () {
                 var chart = new CanvasJS.Chart("chartContainer", {
                     animationEnabled: true,
@@ -32,13 +32,15 @@
                 });
                 chart.render();
             }
-        </script>
-    </head>
+    </script>
+</head>
 </html>
 @using (Html.BeginForm())
 {
-    <h2>Your personlised quote details</h2>
-    <hr/>
+    <div class="wow bounceInLeft">
+        <h2>Your personlised quote details</h2>
+    </div>
+    <hr />
     <div>
         <div class="loan-summary">
             <dl class="dl-horizontal">
@@ -94,14 +96,13 @@
             </dl>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Apply Now" class="btn btn-default"/>
+                    <input type="submit" value="Apply Now" class="btn btn-default" />
                 </div>
             </div>
         </div>
         <div id="chartContainer"></div>
         <script src="~/Scripts/canvasjs.min.js"></script>
     </div>
-
     <p class="redirect">
         @Html.ActionLink("Get New Quote", "Index")
     </p>

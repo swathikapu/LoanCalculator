@@ -1,7 +1,5 @@
-﻿
-
-body {
-    padding-bottom: 20px;
+﻿body {
+    /*padding-bottom: 20px;*/
     color: white;
     background: #36BFC4;
     font-family: 'Literata', serif;
@@ -9,7 +7,7 @@ body {
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-top: 20px;
+    /*padding-top: 20px;*/
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -17,7 +15,6 @@ body {
 */
 .dl-horizontal dt {
     white-space: normal;
-    
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -31,28 +28,43 @@ input {
     max-width: 300px;
 }
 
-*/
 /* User styles*/
-.redirect {
-    color: white;
+
+.form-horizontal {
+    display: inline-block;
+    vertical-align:top;
 }
 
 .form-inputs{
-    width:550px;
+    width:400px;
+}
+
+
+.form-horizontal
+{
+    display:inline-block;
+}
+
+.form-horizontal .control-label{
+    text-align:left;
+    padding-top: 0px;
+}
+
+.col-md-2{
+    width: 100%;
 }
 
 .form-group input[type=submit] {
     /*float: right;*/
     background-color: bisque;
-    position:relative;
-    left:180px;
+    position: relative;
+    left: 180px;
 }
 
 /*Summary page styles*/
 .loan-summary {
     display: inline-block;
     position: relative;
-    /*top: -90px;*/
     font-size: 18px;
     width:400px;
 }
