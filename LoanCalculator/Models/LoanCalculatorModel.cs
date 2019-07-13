@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using LoanCalculator.common;
@@ -10,18 +11,43 @@ namespace LoanCalculator.Models
     public class LoanCalculatorModel
     {
         LoanInterestDBEntities db = new LoanInterestDBEntities();
-        [Required(ErrorMessage="Please enter your first name")]
+        TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+        [Required(ErrorMessage = "Please enter your first name")]
         [RegularExpression(@"^(([A-Za-z]+))$", ErrorMessage="Please enter alphabets only")]
-        public string FirstName { get; set; }
+        private string _FirstName = "";
+        public string FirstName {
+            get
+            {
+                return textInfo.ToTitleCase(_FirstName);
+            }
+            set
+            {
+                _FirstName = value;
+            }
+        }
+
         [Required(ErrorMessage = "Please enter your last name")]
         [RegularExpression(@"^(([A-Za-z]+))$", ErrorMessage="Please enter alphabets only")]
-        public string LastName { get; set; }
+        private string _LastName = "";
+        public string LastName {
+            get
+            {
+                return textInfo.ToTitleCase(_LastName);
+            }
+            set
+            {
+                _LastName = value;
+            }
+        }
+
         [Required(ErrorMessage = "Please enter loan amount (£1-£100000 max)")]
         [Range(1, 100000, ErrorMessage = "Please enter loan amount (£1-£100000 max)")]
         public double LoanAmount { get; set; } 
+
         [Required(ErrorMessage = "Please enter number of years (1-20 years max)")]
         [Range(1, 20, ErrorMessage = "Please enter loan amount(£1 -£100000 max)")]
         public int NumYears { get; set; }
+
         private double? _InterestRateCache = null;
         private double? _MonthlyPaymentCache = null;
         public double InterestRate
