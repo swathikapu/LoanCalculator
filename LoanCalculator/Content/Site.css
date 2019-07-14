@@ -71,6 +71,6 @@ input {
 #chartContainer {
     top: -200px;
     display: inline-block;
-    width:400px;
-    height:300px;
+    width: 300px;
+    height: 300px;
 }
