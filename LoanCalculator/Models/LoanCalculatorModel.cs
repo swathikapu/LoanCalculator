@@ -48,6 +48,7 @@ namespace LoanCalculator.Models
             }
         }
 
+        [DataType(DataType.Currency)]
         [Required(ErrorMessage = "Please enter loan amount (£1-£100000 max)")]
         [Range(1, 100000, ErrorMessage = "Please enter loan amount (£1-£100000 max)")]
         public double LoanAmount { get; set; } 
@@ -83,6 +84,8 @@ namespace LoanCalculator.Models
                 return (double)_InterestRateCache;
             }
         }
+
+        [DataType(DataType.Currency)]
         public double MonthlyPayment
         {
             get
@@ -96,6 +99,8 @@ namespace LoanCalculator.Models
                 return (double)_MonthlyPaymentCache;
             }
         }
+
+        [DataType(DataType.Currency)]
         public double TotalPayment
         {
             get
@@ -103,6 +108,7 @@ namespace LoanCalculator.Models
                 return Math.Round(MonthlyPayment * NumYears * 12, 2);
             }
         }
+
         public double Principal
         {
             get
@@ -110,6 +116,7 @@ namespace LoanCalculator.Models
                 return LoanAmount * 100 / TotalPayment;
             }
         }
+
         public double Interest
         {
             get
