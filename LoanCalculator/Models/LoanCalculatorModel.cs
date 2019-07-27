@@ -54,7 +54,7 @@ namespace LoanCalculator.Models
         public double LoanAmount { get; set; } 
 
         [Required(ErrorMessage = "Please enter number of years (1-20 years max)")]
-        [Range(1, 20, ErrorMessage = "Please enter loan amount(£1 -£100000 max)")]
+        [Range(1, 20, ErrorMessage = "Please enter number of years (1-20 years max)")]
         public int NumYears { get; set; }
 
         private double? _InterestRateCache = null;
